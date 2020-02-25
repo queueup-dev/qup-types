@@ -11,6 +11,7 @@ type PayloadWriter interface {
 	Marshal() ([]byte, error)
 	Reader() (io.Reader, error)
 	ToString() (*string, error)
+	GetTarget() string
 }
 
 type PayloadReader interface {
@@ -19,4 +20,5 @@ type PayloadReader interface {
 	Unmarshal(structure interface{}) error
 	Reader() io.Reader
 	ToString() (*string, error)
+	GetSource() string
 }
