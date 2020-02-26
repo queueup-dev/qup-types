@@ -6,18 +6,20 @@ type Validator interface {
 	Valid() bool
 }
 
-type PayloadWriter interface {
-	Validator
+type PayloadVertex interface {
 	Bytes() ([]byte, error)
-	Marshal() (interface{}, error)
 	Reader() (io.Reader, error)
 	ToString() (*string, error)
 }
 
+type PayloadWriter interface {
+	Validator
+	PayloadVertex
+	Marshal() (interface{}, error)
+}
+
 type PayloadReader interface {
 	Validator
-	Bytes() ([]byte, error)
-	Unmarshal(structure interface{}) error
-	Reader() io.Reader
-	ToString() (*string, error)
+	PayloadVertex
+	Unmarshal(interface{}) error
 }
