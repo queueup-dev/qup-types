@@ -8,7 +8,8 @@ type Validator interface {
 
 type PayloadWriter interface {
 	Validator
-	Marshal() ([]byte, error)
+	Bytes() ([]byte, error)
+	Marshal() (interface{}, error)
 	Reader() (io.Reader, error)
 	ToString() (*string, error)
 }
