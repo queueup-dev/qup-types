@@ -1,6 +1,14 @@
 package types
 
-import "io"
+import (
+	"github.com/getsentry/sentry-go"
+	"io"
+)
+
+type DataNode interface {
+	ApplyToSentryEvent(*sentry.Event)
+	GetPayload() io.Reader
+}
 
 type Validator interface {
 	Valid() bool
