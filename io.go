@@ -18,6 +18,7 @@ type PayloadVertex interface {
 	Bytes() ([]byte, error)
 	Reader() (io.Reader, error)
 	ToString() (*string, error)
+	ContentType() string
 }
 
 type PayloadWriter interface {
